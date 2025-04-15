@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/Ayushmanonlycode/Portfolio-2.0/main/images/logo-icon.png" width="30"> Ayushman Rout's Portfolio
+# Ayushman Rout's Portfolio
 
 ![Portfolio Preview](https://raw.githubusercontent.com/Ayushmanonlycode/Portfolio-2.0/main/screen.png)
 
@@ -31,9 +31,9 @@
 ### Installation
 1. Clone the repository:
    git clone https://github.com/Ayushmanonlycode/Portfolio-2.0.git
-2.Navigate to project directory:
+2. Navigate to project directory:
    cd Portfolio-2.0
-3.Open in browser:
+3. Open in browser:
    start index.html  # Windows
    open index.html   # Mac
    xdg-open index.html  # Linux   
