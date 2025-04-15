@@ -34,6 +34,6 @@
 2. Navigate to project directory:
    cd Portfolio-2.0
 3. Open in browser:
-   start index.html  # Windows
-   open index.html   # Mac
-   xdg-open index.html  # Linux   
+   I>  start index.html  # Windows
+   II>  open index.html   # Mac
+   III> xdg-open index.html  # Linux   
