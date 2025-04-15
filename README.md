@@ -1,6 +1,6 @@
 # <img src="https://raw.githubusercontent.com/Ayushmanonlycode/Portfolio-2.0/main/images/logo-icon.png" width="30"> Ayushman Rout's Portfolio
 
-![Portfolio Preview](https://raw.githubusercontent.com/Ayushmanonlycode/Portfolio-2.0/main/)
+![Portfolio Preview](https://raw.githubusercontent.com/Ayushmanonlycode/Portfolio-2.0/main/screen.png)
 
 ## ✨ Features
 - **Modern UI**: Neon-themed dark interface with glowing effects
