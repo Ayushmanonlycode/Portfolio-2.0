@@ -4,33 +4,39 @@ document.addEventListener('DOMContentLoaded', function() {
   const body = document.body;
   
   // Check for saved theme preference or use preferred color scheme
-  const savedTheme = localStorage.getItem('theme') || 
-                     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-  body.classList.add(savedTheme);
-  themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
-  
-  themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark');
-    body.classList.toggle('light');
-    const theme = body.classList.contains('dark') ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
-    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
-  });
+  if (themeToggle) {
+    const savedTheme = localStorage.getItem('theme') || 
+                       (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    body.classList.add(savedTheme);
+    themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+    
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      body.classList.toggle('light');
+      const theme = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+      themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+    });
+  }
   
   // Mobile Menu Toggle
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('nav ul');
   
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
-  });
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+  }
   
   // Close mobile menu when clicking a link
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
+      if (hamburger && navLinks) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      }
     });
   });
   
@@ -43,10 +49,20 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetElement = document.querySelector(targetId);
       
       if (targetElement) {
+        // Calculate position with header offset
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const targetPosition = targetElement.offsetTop - headerHeight;
+        
         window.scrollTo({
-          top: targetElement.offsetTop - 80,
+          top: targetPosition,
           behavior: 'smooth'
         });
+        
+        // Update active class (optional)
+        document.querySelectorAll('.nav-link').forEach(lnk => lnk.classList.remove('active'));
+        if (this.classList.contains('nav-link')) {
+          this.classList.add('active');
+        }
       }
     });
   });
@@ -55,41 +71,43 @@ document.addEventListener('DOMContentLoaded', function() {
   const typedTextSpan = document.querySelector('.typed-text');
   const cursorSpan = document.querySelector('.cursor');
   
-  const textArray = ['AI solutions', 'machine learning models', 'secure systems', 'web applications'];
-  const typingDelay = 200;
-  const erasingDelay = 100;
-  const newTextDelay = 2000;
-  let textArrayIndex = 0;
-  let charIndex = 0;
-  
-  function type() {
-    if (charIndex < textArray[textArrayIndex].length) {
-      if (!cursorSpan.classList.contains('typing')) cursorSpan.classList.add('typing');
-      typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-      charIndex++;
-      setTimeout(type, typingDelay);
-    } else {
-      cursorSpan.classList.remove('typing');
-      setTimeout(erase, newTextDelay);
+  if (typedTextSpan && cursorSpan) {
+    const textArray = ['AI solutions', 'machine learning models', 'secure systems', 'web applications'];
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newTextDelay = 2000;
+    let textArrayIndex = 0;
+    let charIndex = 0;
+    
+    function type() {
+      if (charIndex < textArray[textArrayIndex].length) {
+        if (!cursorSpan.classList.contains('typing')) cursorSpan.classList.add('typing');
+        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else {
+        cursorSpan.classList.remove('typing');
+        setTimeout(erase, newTextDelay);
+      }
     }
-  }
-  
-  function erase() {
-    if (charIndex > 0) {
-      if (!cursorSpan.classList.contains('typing')) cursorSpan.classList.add('typing');
-      typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-      charIndex--;
-      setTimeout(erase, erasingDelay);
-    } else {
-      cursorSpan.classList.remove('typing');
-      textArrayIndex++;
-      if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-      setTimeout(type, typingDelay + 1100);
+    
+    function erase() {
+      if (charIndex > 0) {
+        if (!cursorSpan.classList.contains('typing')) cursorSpan.classList.add('typing');
+        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } else {
+        cursorSpan.classList.remove('typing');
+        textArrayIndex++;
+        if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+        setTimeout(type, typingDelay + 500);
+      }
     }
+    
+    // Start typewriter effect
+    setTimeout(type, newTextDelay);
   }
-  
-  // Start typewriter effect
-  if (textArray.length) setTimeout(type, newTextDelay + 250);
   
   // Particles.js Configuration
   if (typeof particlesJS !== 'undefined') {
@@ -201,24 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Form submission
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Get form values
-      const formData = new FormData(this);
-      const data = Object.fromEntries(formData);
-      
-      // Here you would typically send the data to a server
-      console.log('Form submitted:', data);
-      
-      // Show success message
-      alert('Thank you for your message! I will get back to you soon.');
-      this.reset();
-    });
-  }
-  
+ 
   // Scroll animation
   const animateOnScroll = () => {
     const elements = document.querySelectorAll('.skill-card, .project-card, .contact-card');
@@ -250,8 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add ripple effect to buttons
   document.querySelectorAll('.btn').forEach(button => {
     button.addEventListener('click', function(e) {
-      e.preventDefault();
-      
       const x = e.clientX - e.target.getBoundingClientRect().left;
       const y = e.clientY - e.target.getBoundingClientRect().top;
       
@@ -265,33 +264,6 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => {
         ripple.remove();
       }, 1000);
-    });
-  });
-});
-document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = document.querySelectorAll('.nav-link');
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      
-      if (targetElement) {
-        // Calculate position with header offset
-        const headerHeight = document.querySelector('header').offsetHeight;
-        const targetPosition = targetElement.offsetTop - headerHeight;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-        
-        // Update active class (optional)
-        navLinks.forEach(lnk => lnk.classList.remove('active'));
-        this.classList.add('active');
-      }
     });
   });
 });
