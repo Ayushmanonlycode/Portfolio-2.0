@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 </head>
 <body class="dark">
 
@@ -22,6 +23,7 @@
         <ul>
           <li><a href="#about" class="nav-link"><span>About</span></a></li>
           <li><a href="#skills" class="nav-link"><span>Skills</span></a></li>
+          <li><a href="#experience" class="nav-link"><span>Experience</span></a></li>
           <li><a href="#projects" class="nav-link"><span>Projects</span></a></li>
           <li><a href="#contact" class="nav-link"><span>Contact</span></a></li>
           
@@ -94,6 +96,10 @@
               <span>JavaScript</span>
             </div>
             <div class="skill-item">
+              <div class="skill-icon"><i class="devicon-typescript-plain"></i></div>
+              <span>TypeScript</span>
+            </div>
+            <div class="skill-item">
               <div class="skill-icon"><i class="fas fa-code"></i></div>
               <span>C++</span>
             </div>
@@ -128,6 +134,10 @@
             <div class="skill-item">
               <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
               <span>Git</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="devicon-jira-plain"></i></div>
+              <span>Jira</span>
             </div>
             <div class="skill-item">
               <div class="skill-icon"><i class="fab fa-github"></i></div>
@@ -301,6 +311,85 @@
         </div>
       </div>
     </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+      <h2 class="section-title"><span>Experience</span></h2>
+      
+      <div class="experience-timeline">
+        <!-- Fenrir Security -->
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="experience-company">
+              <h3>Fenrir Security Private Limited</h3>
+              <span class="experience-role">Founding Intern - Full Stack Developer</span>
+              
+            </div>
+            <div class="experience-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Remote</span>
+              <span class="experience-duration">June 2025 - July 2025</span>
+            </div>
+          </div>
+          <div class="experience-content">
+            <ul class="experience-bullets">
+              <li>Architected the core infrastructure of a cross-platform AI cybersecurity platform using Electron, TypeScript, and React; authored 20,000+ LOC across frontend, backend, and low-level IPC modules, accelerating development velocity.</li>
+              <li>Designed and integrated a scalable multi-agent orchestration layer powered by Mastra, supporting concurrent agent sessions, persistent threads, and contextual prompt injection across custom IPC interfaces.</li>
+              <li>Implemented developer-facing features including AI-native terminals, autonomous code editors, and a multi-session workspace with hierarchical file tree rendering; utilized query-driven pagination for chat history and thread lifecycle governance to ensure high-performance, fault-tolerant multi-agent workflows.</li>
+              <li>Developed selective AST-based code scanning combined with a .fenrirignore parser, enabling secure, high-performance parsing of large codebases and minimizing token usage for LLM inference.</li>
+              <li>Spearheaded a resilient interrupt control pipeline using Electron's IPC Main–Renderer bridge, allowing safe abortion of long-running agent tasks and improving UX consistency across async sessions.</li>
+              <li>Refactored IPC architecture using typed protocol handlers, batched dispatch flows, and structured event maps, reducing logic bugs by over 30% and increasing IPC throughput.</li>
+              <li>Collaborated in a 3-member Agile pod with GitHub Workspaces and Jira; owned features end-to-end, authored dev-facing documentation, and conducted peer reviews to maintain code quality.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- IISPPR -->
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="experience-company">
+              <h3>International Institute of SDGs and Public Policy Research (IISPPR)</h3>
+              <span class="experience-role">Web Developer Intern, NGO</span>
+            </div>
+            <div class="experience-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Remote</span>
+              <span class="experience-duration">May 2025 - July 2025</span>
+            </div>
+          </div>
+          <div class="experience-content">
+            <ul class="experience-bullets">
+              <li>Led a team of 20+ members, coordinating project execution through effective communication, task delegation, and strategic time management, resulting in on-time delivery of all milestones over a 4-week sprint.</li>
+              <li>Expedited debugging and API testing processes using Chrome DevTools and Postman, decreasing time spent identifying and resolving software defects by 15 hours per week and minimizing code errors.</li>
+              <li>Integrated Firebase for authentication and MongoDB for data storage, enabling secure access for 15+ users and smooth real-time dashboard updates with minimal response delay.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- GSSOC -->
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="experience-company">
+              <h3>GirlScript Summer of Code (GSSOC)</h3>
+              <span class="experience-role">Open Source Contributor — Postman Certified</span>
+            </div>
+            <div class="experience-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Remote</span>
+              <span class="experience-duration">2024</span>
+            </div>
+          </div>
+          <div class="experience-content">
+            <ul class="experience-bullets">
+              <li>Earned Postman API Fundamentals Certification, mastering API development, testing, and documentation.</li>
+              <li>Resolved 15+ GitHub issues including bug fixes and API endpoint implementations with 100% acceptance rate.</li>
+              <li>Enhanced collaboration skills through Git workflows and open-source contribution best practices.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects" class="section">
       <h2 class="section-title"><span>Projects</span></h2>
@@ -341,26 +430,25 @@
       <h4>Tech Stack:</h4>
       <div class="tech-stack">
         <div class="tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-          <span>Python</span>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js">
+          <span>Next.js</span>
         </div>
         <div class="tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
-          <span>TensorFlow</span>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI">
+          <span>FastAPI</span>
         </div>
         <div class="tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV">
-          <span>OpenCV</span>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="YOLOv8">
+          <span>YOLOv8</span>
         </div>
+        
       </div>
     </div>
     <div class="project-links">
       <a href="https://github.com/Ayushmanonlycode/SignBridge" class="btn btn-primary">
         <i class="fab fa-github"></i> View Code
       </a>
-      <a href="https://signbridge-ayushman.vercel.app/" class="btn btn-secondary">
-        <i class="fas fa-external-link-alt"></i> Live Demo
-      </a>
+      
     </div>
   </div>
 </div>
@@ -421,6 +509,9 @@
     <div class="project-links">
       <a href="https://github.com/Ayushmanonlycode/JobTrackr" class="btn btn-primary">
         <i class="fab fa-github"></i> View Code
+        <a href="https://job-trackr-one.vercel.app/" class="btn btn-secondary">
+          <i class="fas fa-external-link-alt"></i> Live Demo
+        </a>
       </a>
     </div>
   </div>
@@ -473,6 +564,7 @@
           <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
